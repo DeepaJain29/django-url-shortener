@@ -1,0 +1,81 @@
+Project Overview: Django URL Shortener
+Project Goal
+The goal of this project is to develop a web application that allows users to shorten long URLs into manageable short links and provides seamless redirection when those short links are accessed. This will involve a combination of backend development using Django, database modeling, and basic front-end interface design.
+
+Project Requirements
+Functional Requirements
+Shorten URL: Users can input a long URL and receive a shorter version.
+Redirection: When the short URL is accessed, it redirects the user to the original URL.
+Uniqueness: Each shortened URL should be unique.
+Persistence: Store original URLs and their shortened versions in a database.
+Scalability: The system should handle multiple requests efficiently.
+Non-Functional Requirements
+User-friendly Interface: The application should be simple and easy to use.
+Reliability: URLs must always redirect accurately without errors.
+Security: Prevent malicious URLs from being entered or used.
+Project Workflow
+To approach this project methodically, follow these steps:
+
+1. Requirements Gathering
+Understand the core functionalities:
+
+Input form for entering a long URL.
+Display a short URL after submission.
+Handle redirection when the short URL is accessed.
+2. Plan Database Schema
+Define a URL model:
+original_url: Field to store the long URL (e.g., models.URLField).
+short_code: Unique code for each URL (e.g., models.CharField).
+created_at: Timestamp for record creation (e.g., models.DateTimeField).
+3. Set Up the Environment
+Install Django and create a new project and app.
+Set up the database (SQLite for simplicity or PostgreSQL for production).
+4. Develop the Backend
+URL Shortening Logic:
+Create a function to generate a random unique short code.
+Check the database for collisions.
+Redirect Logic:
+Use Django's get_object_or_404 to find the original URL based on the short code.
+Redirect using Django's HttpResponseRedirect or redirect() method.
+5. Build the Frontend
+Form Page:
+Create a basic HTML form to accept the long URL.
+Show the shortened link after submission.
+Redirection Page:
+No visible page is needed here; handle redirection automatically.
+6. Routing
+Define two primary routes:
+Home Page: Handles form submissions and short URL generation.
+Short URL Route: Captures the short code and redirects to the original URL.
+7. Testing
+Test the application manually:
+Enter valid and invalid URLs.
+Check redirection accuracy.
+Ensure uniqueness of short codes.
+Write automated unit tests for:
+URL generation logic.
+Redirection functionality.
+Error handling.
+8. Deployment
+Prepare the project for deployment:
+Use Django's DEBUG = False for production.
+Serve static files using tools like whitenoise.
+Deploy to platforms like Heroku, AWS, or PythonAnywhere.
+Milestones
+Week 1: Environment setup, database schema, and backend logic.
+Week 2: Frontend form and routing.
+Week 3: Testing and debugging.
+Week 4: Deployment and adding optional features (analytics, expiration, etc.).
+Optional Features for Future Expansion
+Analytics:
+Track how many times a short URL is used.
+Custom Short Codes:
+Allow users to specify their own short codes.
+API:
+Build a REST API using Django REST Framework for external use.
+Admin Panel:
+View and manage all shortened URLs.
+Your Approach
+Understand Each Step: Instead of copy-pasting code, implement each piece step by step and understand why it’s needed.
+Focus on Small Goals: Break the project into smaller parts (e.g., URL shortening, redirection) and complete each one before moving on.
+Test Continuously: Verify each part as soon as you complete it to ensure the system works as expected.
